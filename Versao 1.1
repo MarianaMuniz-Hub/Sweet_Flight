@@ -1,0 +1,67 @@
+#include <stdio.h>
+
+int main() {
+    //Declaracao das variaveis e vetores utilizados:
+    int opcao,i;
+    int aviao[3];
+    int acentos[3];
+    
+    struct reserva {
+        int numero_aviao;
+        char nome_passageiro[25];
+    };
+    
+    //Menu de opcoes:
+    do {
+        printf(".>.>.>.> Seja bem-vindo a companhia Sweet Flight! <.<.<.<.\n");
+        printf("Essas sao as opcoes disponiveis no nosso sistema:\n");
+        printf("Opcao 1- Registrar o número de cada aviao;\n");
+        printf("Opcao 2- Registrar o quantitativo de assentos disponiveis em cada aviao;\n");
+        printf("Opcao 3- Reservar passagem aerea;\n");
+        printf("Opcao 4- Realizar consulta por aviao;\n");
+        printf("Opcao 5- Realizar consulta por passageiro;\n");
+        printf("Opcao 6- Encerrar.\n");
+        printf("Qual opcao voce escolhe? ");
+        scanf("%d",&opcao);
+        
+    //Acao e reacao a determidada escolha:
+      switch (opcao){
+           case 1:
+           printf("Cadastre os avioes, lembrando que tem 04 avioes disponiveis:\n");
+           for (i = 0;i <= 3; i++){
+             printf("O %d° avião:\n", i + 1);
+             scanf("%i",&aviao[i]); 
+             printf("Os avioes foram cadastrados com sucesso!");
+             
+           }
+           printf("\n");
+           break;
+           
+           case 2:
+           printf("\n");
+           break;
+           
+           case 3:
+           printf("\n");
+           break;
+           
+           case 4:
+           printf("\n");
+           break;
+           
+           case 5:
+           printf("\n");
+           break;
+           
+           case 6:
+           printf("Encerrando");
+           break;
+           
+           default:
+           printf("A opcao digitada eh invalida digite outro numero!\n");
+           printf("\n");
+      }
+    } while (opcao != 6);
+    
+    return 0;
+}
