@@ -1,0 +1,141 @@
+#include <stdio.h>
+
+int main() {
+    //Declaracao das variaveis e vetores utilizados:
+    
+    int opcao,i, num_aviao, aviao_encontrado, num_aviao_consulta;;
+    int aviao[3];
+    int acentos[3];
+    aviao_encontrado = 0;
+    struct reserva {
+        int numero_aviao;
+        char nome_passageiro[25];
+    };
+    
+    struct reserva reservas[20]; 
+    int total_reservas = 0; 
+    
+    //Menu de opcoes:
+    do {
+        printf("~~~~ Seja bem-vindo a companhia Sweet Flight! ~~~~\n");
+        printf("-> Essas sao as opcoes disponiveis no nosso sistema:\n");
+        printf("Opcao 1- Registrar o número de cada aviao;\n");
+        printf("Opcao 2- Registrar o quantitativo de assentos disponiveis em cada aviao;\n");
+        printf("Opcao 3- Reservar passagem aerea;\n");
+        printf("Opcao 4- Realizar consulta por aviao;\n");
+        printf("Opcao 5- Realizar consulta por passageiro;\n");
+        printf("Opcao 6- Encerrar.\n");
+        printf("Qual opcao voce escolhe? ");
+        scanf("%d",&opcao);
+        
+        //Acoes de acordo com cada opcao escolhida:
+      switch (opcao){
+          
+              //Opcao 1 = Cadastro dos avioes:
+           case 1:
+           
+           printf("\n");
+           printf("Cadastre os avioes, lembrando que tem 04 avioes disponiveis:\n");
+           
+              //Estrutura de repeticao 'para', usada para cadastramento de cada aviao:
+           for (i = 0; i <= 3; i++){
+             printf("O %d° avião: ", i + 1);
+             scanf("%i",&aviao[i]); 
+           }
+              
+           printf("Os avioes foram cadastrados com sucesso!\n");
+           printf("\033[H\033[2J"); 
+           
+              //Mostrando os avioes disponiveis:
+           printf("Temos os seguintes avioes disponiveis:\n");
+           for (i = 0;i <= 3; i++){
+               printf("Aviao %d°: %d\n",i + 1, aviao[i]);
+           }
+           printf("\n");
+           break;
+           
+           case 2:
+           
+           printf("\n");
+           printf("Cadastre quantos acentos terao cada aviao, lembrando que tem 4 avioes disponiveis: \n");
+           
+              //Estrutura de repeticao 'para', usada para cadastramento do acento de cada aviao:
+           for (i = 0; i <= 3; i++){
+             printf("Qual sera a quantidade de acentos do %d° avião: ", i + 1);
+             scanf("%i",&acentos[i]); 
+           }
+           
+           printf("Os acentos dos avioes foram cadastrados com sucesso!\n");
+           printf("\033[H\033[2J"); 
+           
+              //Mostrando os acentos disponiveis em cada aviao cadastrado:
+           printf("Temos os seguintes acentos disponiveis por aviao:\n");
+           for (i = 0;i <= 3; i++){
+               printf("Aviao %d°: %d\n",i + 1, acentos[i]);
+           }
+           
+           printf("\n");
+           break;
+           
+           case 3:
+           
+              //Escolha do aviao:
+           printf("Qual aviao voce deseja fazer sua reserva? ");
+           scanf("%d",&num_aviao);
+           aviao_encontrado = 0;
+           int indice_aviao = -1;
+           
+             //Encontrando o aviao no vetor:
+            for(i = 0; i <= 3; i++ ){
+               
+               //Caso o aviao digitado esteja cadastrado no vetor:
+                if (aviao[i] == num_aviao){
+                       aviao_encontrado = 1;
+                       indice_aviao = i;
+                       printf("\n");
+                       
+                       if (acentos[i] > 0){
+                            printf("O aviao escolhido possui %d acentos!", acentos[i]);
+                            printf("\nDigite o nome do passageiro: ");
+                            scanf("%s",reservas[total_reservas].nome_passageiro);
+                            
+                            reservas[total_reservas].numero_aviao = num_aviao;
+                            total_reservas++;
+                            acentos[i]--; 
+                            printf("Reserva feita com sucesso!\n");
+                            printf("\n");
+                        } else {
+                            printf("Nao ha acentos disponiveis para este aviao!");
+                            printf("\n");
+                        }
+                        break;
+                }        
+            }
+               //Caso o aviao digitado nao esteja cadastrado no vetor:
+            if (!aviao_encontrado){
+                       printf("O aviao escolhido nao existe! Tente novamente!");
+                       printf("\n");
+            }
+           printf("\n");
+           break;
+           
+           case 4:
+           printf("\n");
+           break;
+           
+           case 5:
+           printf("\n");
+           break;
+           
+           case 6:
+           printf("Estamos encerrando aqui o seu atendimento, obrigada(o)!");
+           break;
+           
+           default:
+           printf("A opcao digitada eh invalida digite outro numero!\n");
+           printf("\n");
+      }
+    } while (opcao != 6);
+    
+    return 0;
+}
